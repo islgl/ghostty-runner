@@ -1,0 +1,10 @@
+# Alfred
+*.alfredpreferences
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon
+icon.png.backup

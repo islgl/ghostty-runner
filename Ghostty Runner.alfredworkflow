@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>cc.lglgl.alfred</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>hi@lglgl.cc</string>
+	<key>description</key>
+	<string>Run command in Ghostty</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Ghostty Runner</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>&gt;</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Shuffling...</string>
+				<key>script</key>
+				<string>query="$1"
+
+# 输出 JSON，arg 设置为 ${query}
+cat &lt;&lt;EOF
+{
+  "items": [
+    {
+      "uid": "ghostty_run",
+      "title": "Run in Ghostty: ${query}",
+      "subtitle": "Press Enter to execute in Ghostty",
+      "arg": "${query}",
+      "icon": {
+        "path": "icon.png"
+      }
+    }
+  ]
+}
+EOF</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Run command in Ghostty</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>on run argv
+ -- 合并所有参数（处理空格）
+ set theCommand to ""
+ repeat with i from 1 to length of argv
+  if i &gt; 1 then
+   set theCommand to theCommand &amp; " "
+  end if
+  set theCommand to theCommand &amp; item i of argv
+ end repeat
+ 
+ -- 启动 Ghostty
+ do shell script "open -a Ghostty"
+ 
+ -- 等待 Ghostty 激活
+ delay 0.5
+  -- 激活 Ghostty 窗口
+ tell application "Ghostty"
+  activate
+ end tell
+ 
+ delay 0.3
+ 
+ -- 发送命令 + 回车
+ tell application "System Events"
+  keystroke theCommand
+  keystroke return
+ end tell
+end run</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Ghostty Runner
+
+**Version:** 0.1.0  
+**Author:** islgl(hi@lglgl.cc)
+
+Run commands directly in Ghostty terminal via Alfred.
+
+## Usage
+
+Type `&gt;` followed by your command:
+
+```bash
+ls -la
+git status
+npm install
+```
+
+## Requirements
+
+- macOS
+- Ghostty terminal installed
+- Alfred Powerpack
+
+## Notes
+
+- Commands are executed in a new Ghostty window
+- Shell remains open after execution
+- Supports commands with spaces and arguments</string>
+	<key>uidata</key>
+	<dict>
+		<key>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>50</real>
+		</dict>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<dict>
+			<key>xpos</key>
+			<real>50</real>
+			<key>ypos</key>
+			<real>50</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.1.0</string>
+	<key>webaddress</key>
+	<string>lglgl.cc</string>
+</dict>
+</plist>
