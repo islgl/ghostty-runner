@@ -2,11 +2,14 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![GitHub release](https://img.shields.io/github/v/release/islgl/ghostty-runner)](https://github.com/islgl/ghostty-runner/releases)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)](https://github.com/islgl/ghostty-runner/releases/tag/v1.0.1)
 [![Alfred](https://img.shields.io/badge/Alfred-5%2B-3786d4)](https://www.alfredapp.com/)
 
 > Run commands directly in [Ghostty](https://ghostty.org/) terminal via Alfred.
 
 [![Install Workflow](https://img.shields.io/badge/📦-Install%20Workflow-3786d4?style=for-the-badge)](https://github.com/islgl/ghostty-runner/raw/main/Ghostty%20Runner.alfredworkflow)
+
+![Logo](logo.png)
 
 ---
 
